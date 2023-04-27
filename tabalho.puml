@@ -1,0 +1,49 @@
+@startuml
+left to right direction
+package Universidade {
+    actor seguranca
+    actor secretario
+    actor financeiro
+    actor fachineiro
+    usecase "Prestar servoços" as OP1
+    seguranca --> OP1
+    secretario --> OP1
+    financeiro --> OP1
+    fachineiro --> OP1
+    actor professor
+    usecase "Ministrar aula" as UC4
+    actor reitor
+    usecase "Adiministrar Universidade" as UC7
+    usecase "Representar Universidade" as UC8
+    actor cordenador
+    usecase "Orientar matricula" as UC5
+    usecase "Administrar curso" as UC6
+    reitor --> UC4
+    professor --> UC4
+    cordenador --> UC4
+    cordenador --> UC5
+    cordenador --> UC6
+    reitor --> UC7
+    reitor --> UC8
+    actor Universitario
+    UC4 ..> Universitario
+    usecase "Estudar" as UC9
+    Universitario --> UC9
+    usecase "mensalidade" as UC10
+    Universitario --> UC10
+    UC10 ..> financeiro
+    UC7 ..> cordenador
+    UC6 ..> professor
+    UC5 ..> Universitario
+    usecase "salario" as UC11
+    financeiro --> UC11
+    UC11 ..> reitor
+    UC11 ..> cordenador
+    UC11 ..> professor
+    UC11 ..> seguranca
+    UC11 ..> secretario
+    UC11 ..> fachineiro
+    UC11 ..> financeiro
+    OP1 ..> Universitario
+}
+@enduml
